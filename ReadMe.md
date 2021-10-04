@@ -4,6 +4,8 @@
 
 [Graph Single Objective](results_singleobjective.py)
 
+Please perfom a [quick hotfix](Hotfix%20Tutorial.md) to observe the results appropriately
+
 [Graph Multi Objective](results_multiobjective.py)
 
 ## Generating results
