@@ -19,8 +19,8 @@ import mpl_toolkits.mplot3d.art3d
 '''
 number_of_ships = 1  # 1, 2 or 3
 
-# include_distance = False  # False for plotting the results with 3 objectives
-include_distance = True  # True for plotting the results with 4 objectives (including distance)
+include_distance = False  # False for plotting the results with 3 objectives
+# include_distance = True  # True for plotting the results with 4 objectives (including distance)
 
 if include_distance and number_of_ships != 1:
     raise ValueError("Results for 4 objectives were only obtained with 1 ship")
@@ -36,7 +36,6 @@ def get_clean(_file):
 
 dist = '_distance' if include_distance else ''
 f3 = pd.read_csv(f"Results/fitness_multi_{number_of_ships}ships{dist}.txt", index_col=0)
-print(f3)
 ind = []
 with open(f"Results/ind_multi_{number_of_ships}ships{dist}.txt") as f:
     line = f.readline()
