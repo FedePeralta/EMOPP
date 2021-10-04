@@ -3,13 +3,15 @@ import numpy as np
 import pandas as pd
 from matplotlib import cm
 
+import mpl_toolkits.mplot3d.art3d
+
 '''
     Indicate the number of ships  using:
         number_of_ships = 1
     Works with 1, 2 and 3 ships.
         
-    For a functional resulting figure, one module of the matplotlib library needs to be modified.
-    More information on
+    For a functional resulting figure, one module of the matplotlib library (mpl_toolkits.mplot3d.art3d)
+    needs to be modified. More information on https://github.com/FedePeralta/EMOPP
     
     Run the script and select any Pareto point in the Objective Space (1st sub-figure), the selected point will graph
     its individual representation in the second sub-figure (Search Space). 
