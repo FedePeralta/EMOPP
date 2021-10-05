@@ -58,8 +58,8 @@ obj_space.set_ylabel('$Himmelblau$', fontsize=15)
 obj_space.set_zlabel('$Rosenbrock$', fontsize=15)
 
 if include_distance:
-    markers = obj_space.scatter(f3["sh"], f3["hb"], f3["rb"], c=np.arange(0, len(f3["sh"])), cmap='jet', picker=True,
-                                pickradius=2, s=f3["di"], alpha=0.2)
+    markers = obj_space.scatter(f3["sh"], f3["hb"], f3["rb"], c=f3["di"], cmap='jet',
+                                picker=True, pickradius=2, s=f3["di"], alpha=0.4)
 else:
     obj_space.scatter(np.zeros_like(f3["hb"]), f3["hb"], f3["rb"], c=np.zeros_like(f3["sh"]), cmap='binary_r',
                       alpha=0.05)
@@ -85,7 +85,8 @@ selected = [obj_space.plot(f3["sh"][index], f3["hb"][index], f3["rb"][index], 'X
                            'k--', alpha=0.5, linewidth=2)
             ]
 
-obj_space.legend()
+obj_space.legend(prop={'size': 20})
+# plt.colorbar(markers)
 
 X, Y = np.meshgrid(np.arange(0, 19, 1), np.arange(0, 29, 1))
 z1 = np.full_like(m1, 0)
@@ -140,7 +141,7 @@ def paint_paths(index_=0):
 
 
 paint_paths()
-search_space.legend(fancybox=True, title="Individual Representation")
+search_space.legend(fancybox=True, title="Individual Representation", prop={'size': 20})
 
 
 def onclick(event):

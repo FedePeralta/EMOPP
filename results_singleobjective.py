@@ -77,6 +77,7 @@ def paint_paths(index_=0, face_=0):
 
 
 paint_paths()
-search_spaces[0].legend(fancybox=True, title="Paths for Best Individual")
+l = search_spaces[0].legend(fancybox=True, title="Paths for Best Individual", prop={"size": 20})
+l.get_title().set_fontsize('14')
 
 plt.show()
