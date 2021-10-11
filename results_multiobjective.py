@@ -19,8 +19,8 @@ import mpl_toolkits.mplot3d.art3d
 '''
 number_of_ships = 1  # 1, 2 or 3
 
-include_distance = False  # False for plotting the results with 3 objectives
-# include_distance = True  # True for plotting the results with 4 objectives (including distance)
+# include_distance = False  # False for plotting the results with 3 objectives
+include_distance = True  # True for plotting the results with 4 objectives (including distance)
 
 if include_distance and number_of_ships != 1:
     raise ValueError("Results for 4 objectives were only obtained with 1 ship")
@@ -85,7 +85,7 @@ selected = [obj_space.plot(f3["sh"][index], f3["hb"][index], f3["rb"][index], 'X
                            'k--', alpha=0.5, linewidth=2)
             ]
 
-obj_space.legend(prop={'size': 20})
+# obj_space.legend(prop={'size': 20})
 # plt.colorbar(markers)
 
 X, Y = np.meshgrid(np.arange(0, 19, 1), np.arange(0, 29, 1))
@@ -96,11 +96,13 @@ z3 = np.full_like(m1, 10)
 search_space = fig.add_subplot(122, projection='3d', azim=-80, elev=-153.5, proj_type='ortho')
 
 paths = []
-search_space.set_zticks([0, 5, 10])
-search_space.set_zticklabels(["$Hb.$", "$Rs.$", "$Sh.$"])
-search_space.get_xaxis().set_ticks([])
-search_space.get_yaxis().set_ticks([])
-search_space.grid(False)
+# search_space.set_zticks([0, 5, 10])
+# search_space.set_zticklabels(["$Hb.$", "$Rs.$", "$Sh.$"])
+# search_space.get_xaxis().set_ticks([])
+# search_space.get_yaxis().set_ticks([])
+# search_space.grid(False)
+search_space.axis('off')
+
 
 search_space.plot_surface(X - 0.5, Y - 0.5, z1, facecolors=cm.hot(m1, 0.5))
 search_space.plot_surface(X - 0.5, Y - 0.5, z2, facecolors=cm.hot(m2, 0.5))
@@ -127,7 +129,7 @@ def paint_paths(index_=0):
             search_space.quiver(current_data[:-1, 0], current_data[:-1, 1], np.full_like(current_data[:-1, 0], 0),
                                 current_data[1:, 0] - current_data[:-1, 0],
                                 current_data[1:, 1] - current_data[:-1, 1],
-                                np.zeros_like(current_data[:-1, 0]), label=f"V{i + 1}", color=veh_colors[i]))
+                                np.zeros_like(current_data[:-1, 0]), label=f"ASV{i + 1}", color=veh_colors[i]))
         paths.append(
             search_space.quiver(current_data[:-1, 0], current_data[:-1, 1], np.full_like(current_data[:-1, 0], 5),
                                 current_data[1:, 0] - current_data[:-1, 0],
@@ -141,7 +143,7 @@ def paint_paths(index_=0):
 
 
 paint_paths()
-search_space.legend(fancybox=True, title="Individual Representation", prop={'size': 20})
+# search_space.legend(fancybox=True, title="Individual Representation", prop={'size': 20})
 
 
 def onclick(event):
